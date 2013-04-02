@@ -28,6 +28,7 @@ class Graphicle {
     
   
   }
+  
   void render(){
     pushMatrix();
     translate(x,y,-z);
