@@ -1,5 +1,7 @@
 int size = 1;
 Monome m;
+  OscP5 oscP5;
+  NetAddress monomeIn, serverIn;
 Graphicle gpx;
 Graphicle[] gpxs;
 
@@ -13,6 +15,11 @@ void setup() {
   
   //monomeconfig
   m = new Monome();
+  /////OSC-monome ///use bonjour-browser to discover the port values or find them as described here http://monome.org/docs/app:serialosc:zeroconf#session_data
+  this.oscP5 = new OscP5(this,21339);  ///OSClistener port
+  //  oscServer = new OscP5(this,12436);  ///OSClistener port
+  this.monomeIn = new NetAddress("127.0.0.1", 21339); ///monome input port
+  this.serverIn = new NetAddress("127.0.0.1", 12436); ///serialOSC input port
   
   ///////images
   gpxs = new Graphicle[8];
@@ -38,6 +45,14 @@ void draw() {
     gpx.render();
    }
 }
+
+void oscEvent(OscMessage theOscMessage) {
+  /* print the address pattern and the typetag of the received OscMessage */
+  print("### received an osc message.");
+  print(" addrpattern: "+theOscMessage.addrPattern());
+  println(" typetag: "+theOscMessage.typetag());
+}
+
 
 void keyPressed() {
 //   OscMessage msg = new OscMessage("/sys/info");
