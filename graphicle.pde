@@ -25,7 +25,7 @@ class Graphicle {
   }
   
   void init() {
-
+    
   
   }
   void render(){
