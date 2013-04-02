@@ -2,7 +2,7 @@ class Graphicle {
   PImage img;
   int x,y,z;
   int scale;
-  float rotX;
+  float rotX,rotY,rotZ;
   
   
   
@@ -33,8 +33,8 @@ class Graphicle {
     translate(x,y,-z);
     scale(scale);
     rotateX(rotX);
-    rotateY(PI/8);
-    rotateZ(PI/8);
+    rotateY(rotY);
+    rotateZ(rotZ);
     beginShape();
     texture(img);
     vertex(-img.width/2, -img.height/2, 0, 0,0);
