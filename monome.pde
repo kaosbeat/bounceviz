@@ -2,6 +2,7 @@ import oscP5.*;
 import netP5.*;
 
 class Monome {
+  
   int dimX,dimY;
   OscP5 oscP5;
   NetAddress monomeIn, serverIn;
@@ -26,10 +27,21 @@ class Monome {
     
   }
   
-  void oscEvent(OscMessage theOscMessage) {
+  public void oscEvent(OscMessage theOscMessage) {
   /* print the address pattern and the typetag of the received OscMessage */
   print("### received an osc message.");
   print(" addrpattern: "+theOscMessage.addrPattern());
   println(" typetag: "+theOscMessage.typetag());
 }
+
+  public void setValue(int x, int y, int value) {
+    OscMessage msg = new OscMessage("/monome/grid/led/set");
+    msg.add(x);
+    msg.add(y);
+    msg.add(value);
+    oscP5.send(msg, serverIn);
+  }
+
+
+
 }

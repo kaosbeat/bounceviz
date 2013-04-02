@@ -24,7 +24,6 @@ void setup() {
   gpxs[5] = new Graphicle(600, 100, 100, 0,0,0,1, "star.png");
   gpxs[6] = new Graphicle(700, 100, 100, 0,0,0,1, "boem.gif");
   gpxs[7] = new Graphicle(800, 100, 100, 0,0,0,1, "1up.png");
-  
 }
 
 void draw() { 
@@ -38,13 +37,12 @@ void draw() {
     gpx.rotX = random(PI/2); 
     gpx.render();
    }
-
-
 }
 
 void keyPressed() {
-   OscMessage msg = new OscMessage("/sys/info");
-   m.oscP5.send(msg, m.serverIn);
+//   OscMessage msg = new OscMessage("/sys/info");
+//   m.oscP5.send(msg, m.serverIn);
+   m.setValue(1,1,1);
 }
 
   
